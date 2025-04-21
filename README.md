@@ -12,7 +12,7 @@ The application is built using Go using the SDKs for Azure Cosmos DB ([`azcosmos
 - No need to use service keys since the application supports service principals via [DefaultAzureCredential](https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/authentication-overview#defaultazurecredential).
 - Also stores source file name in the `metadata` attribute
 
-## Run the application: Prerequisites
+## Prerequisites
 
 Complete these steps before running the application.
 
