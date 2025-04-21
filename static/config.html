@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration - Document Processing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Configuration</h1>
+            <p class="subtitle">Azure Cosmos DB and Azure OpenAI settings</p>
+            <a href="index.html" class="config-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Processing
+            </a>
+        </div>
+
+        <div class="config-form">
+            <form id="configForm">
+                <div class="config-category">
+                    <div class="category-header" onclick="toggleCategory('cosmosdb')">
+                        <h3><i class="fas fa-database"></i> Azure Cosmos DB</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="cosmosdb" class="category-content">
+                        <div class="form-group">
+                            <label for="cosmosDBEndpoint"
+                                title="The endpoint URL of your Azure Cosmos DB account">Endpoint:</label>
+                            <input type="text" id="cosmosDBEndpoint" name="cosmosDBEndpoint"
+                                value="https://COSMOS_DB_ACCOUNT_NAME.documents.azure.com:443/" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="databaseName"
+                                title="The name of your Cosmos DB database (should be pre-created)">Database
+                                Name:</label>
+                            <input type="text" id="databaseName" name="databaseName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="containerName"
+                                title="The name of your Cosmos DB container (should be pre-created with appropriate vector policy)">Container
+                                Name:</label>
+                            <input type="text" id="containerName" name="containerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="textAttribute" title="The name of the attribute containing text data">Text
+                                Attribute Name:</label>
+                            <input type="text" id="textAttribute" name="textAttribute" value="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="embeddingAttribute"
+                                title="The name of the attribute containing embedding data (should be the same as the attribute configured in the vector policy)">Embedding
+                                Attribute
+                                Name:</label>
+                            <input type="text" id="embeddingAttribute" name="embeddingAttribute" value="embeddings"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataAttribute"
+                                title="The name of the attribute containing metadata">Metadata Attribute Name:</label>
+                            <input type="text" id="metadataAttribute" name="metadataAttribute" value="metadata"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-category">
+                    <div class="category-header" onclick="toggleCategory('openai')">
+                        <h3><i class="fas fa-brain"></i> Azure OpenAI</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="openai" class="category-content">
+                        <div class="form-group">
+                            <label for="azureOpenAIEndpoint"
+                                title="The endpoint URL of your Azure OpenAI service">Endpoint:</label>
+                            <input type="text" id="azureOpenAIEndpoint" name="azureOpenAIEndpoint"
+                                value="https://AZURE_OPENAI_ACCOUNT_NAME.openai.azure.com/" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="embeddingModel"
+                                title="The name of the embedding model to use (should be already deployed in Azure OpenAI)">Embedding
+                                Model:</label>
+                            <input type="text" id="embeddingModel" name="embeddingModel" value="text-embedding-3-small"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-category">
+                    <div class="category-header" onclick="toggleCategory('chunkSettings')">
+                        <h3><i class="fas fa-cut"></i> Chunk Settings</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div id="chunkSettings" class="category-content">
+                        <div class="form-group">
+                            <label for="chunkSize"
+                                title="The size of each text chunk for processing. Larger chunks provide more context but may be less precise">Chunk
+                                Size:</label>
+                            <input type="number" id="chunkSize" name="chunkSize" value="1500" min="100" max="8000"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="chunkOverlap"
+                                title="The number of characters that overlap between consecutive chunks. Helps maintain context between chunks">Chunk
+                                Overlap:</label>
+                            <input type="number" id="chunkOverlap" name="chunkOverlap" value="200" min="0" max="1000"
+                                required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="primary-button">
+                        <i class="fas fa-save"></i>
+                        Save Configuration
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div id="status" class="status-message"></div>
+    </div>
+    <script src="config.js"></script>
+</body>
+
+</html>

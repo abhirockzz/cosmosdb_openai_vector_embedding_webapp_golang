@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Processing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vector Embedding App</h1>
+            <p class="subtitle">Process documents with Azure Cosmos DB, Azure OpenAI, and Go</p>
+        </div>
+
+        <div id="configStatus" class="config-status-section">
+            <div class="config-status-content">
+                <i class="fas fa-cog fa-spin"></i>
+                <h2>Configuration Required</h2>
+                <p>Before you can process documents, you need to configure your Azure Cosmos DB and OpenAI settings.</p>
+                <a href="config.html" class="config-button">Configure</a>
+            </div>
+        </div>
+
+        <div id="mainContent" class="main-content" style="display: none;">
+            <div class="header-actions">
+                <a href="config.html" class="config-link">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+
+            <div class="input-section">
+                <h2><i class="fas fa-file-upload"></i> Choose document(s) to process</h2>
+                <div class="input-type-selection">
+                    <div class="radio-group">
+                        <input type="radio" id="urlOption" name="inputType" value="url">
+                        <label for="urlOption">
+                            <i class="fas fa-link"></i>
+                            URL
+                        </label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="fileOption" name="inputType" value="file">
+                        <label for="fileOption">
+                            <i class="fas fa-file"></i>
+                            Files
+                        </label>
+                    </div>
+                </div>
+                <div id="urlInputContainer" class="form-group" style="display: none;">
+                    <label for="urlInput">Document URL:</label>
+                    <input type="url" id="urlInput" value="https://pdfobject.com/pdf/sample.pdf">
+                </div>
+                <div id="fileInputContainer" class="form-group" style="display: none;">
+                    <label for="fileInput">Select Files:</label>
+                    <input type="file" id="fileInput" multiple>
+                    <div class="help-text">
+                        <i class="fas fa-info-circle"></i>
+                        Supports any text content including .txt, .pdf, .md (Markdown), .html,
+                        .csv, etc.
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h2><i class="fas fa-tasks"></i> Progress</h2>
+                <div id="progressBar" class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div id="progressStatus" class="progress-status">
+                    <i class="fas fa-check-circle"></i>
+                    Ready to start
+                </div>
+            </div>
+
+            <button id="startButton" class="primary-button">
+                <i class="fas fa-play"></i>
+                Process Documents
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
