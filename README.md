@@ -1,8 +1,8 @@
 # Vector embeddings made easy with Go, Azure Cosmos DB, and OpenAI
 
-This is a simple web application using which you can quickly generate vector embeddings for various document types and store them directly into [Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search). Once stored, this data can be leveraged by other applications for tasks like vector search, part of a Retrieval-Augmented Generation (RAG) workflow, and more.
+![](images/logo.png)
 
-![](images/main.png)
+This is a simple web application using which you can quickly generate vector embeddings for various document types and store them directly into [Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search). Once stored, this data can be leveraged by other applications for tasks like vector search, part of a Retrieval-Augmented Generation (RAG) workflow, and more.
 
 The application is built using Go using the SDKs for Azure Cosmos DB ([`azcosmos`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos)) and Azure OpenAI ([`azopenai`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/ai/azopenai)). It also utilizes the [`langchaingo`](https://github.com/tmc/langchaingo) library for document loading and text splitting. The frontend is a simple HTML, CSS, and JavaScript embedded directly in the Go application.
 
